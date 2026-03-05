@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import API from "../api/axios";
 import { showSuccess, showError } from "../utils/toast";
 
@@ -8,6 +9,7 @@ function Register() {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("jobseeker");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleRegister = async () => {
     if (!name || !email || !password) {
@@ -20,7 +22,7 @@ function Register() {
       await API.post("/auth/register", { name, email, password, role });
       showSuccess("Registration successful! Redirecting to login...");
       setTimeout(() => {
-        window.location.href = "/";
+        navigate("/login");
       }, 1500);
     } catch (err) {
       showError(err.response?.data?.msg || "Registration failed. Please try again.");
@@ -102,9 +104,9 @@ function Register() {
           <div className="text-center pt-4 border-t border-gray-200">
             <p className="text-sm text-gray-600">
               Already have an account?{" "}
-              <a href="/" className="text-blue-600 hover:text-blue-700 font-semibold">
+              <Link to="/login" className="text-blue-600 hover:text-blue-700 font-semibold">
                 Sign in
-              </a>
+              </Link>
             </p>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -23,7 +23,7 @@ import AdminLayout from "./components/AdminLayout";
 
 function App() {
   return (
-    <>
+    <Router>
       <ToastContainer />
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
@@ -57,7 +57,7 @@ function App() {
 
         <Route path="*" element={<h2>404 Page Not Found</h2>} />
       </Routes>
-    </>
+    </Router>
   );
 }
 

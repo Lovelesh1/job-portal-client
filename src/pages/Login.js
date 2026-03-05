@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import API from "../api/axios";
 import { showSuccess, showError } from "../utils/toast";
 
@@ -99,9 +99,9 @@ function Login() {
           <div className="text-center pt-4 border-t border-gray-200">
             <p className="text-sm text-gray-600">
               Don't have an account?{" "}
-              <a href="/register" className="text-blue-600 hover:text-blue-700 font-semibold">
+              <Link to="/register" className="text-blue-600 hover:text-blue-700 font-semibold">
                 Sign up
-              </a>
+              </Link>
             </p>
           </div>
         </div>
