@@ -1,7 +1,8 @@
 import axios from "axios";
 
+// Force rebuild - updated baseURL
 const API = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || "https://job-portal-backend-x29s.onrender.com/api",
+  baseURL: "https://job-portal-backend-x29s.onrender.com/api",
 });
 
 API.interceptors.request.use(
