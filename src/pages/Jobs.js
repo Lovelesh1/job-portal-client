@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../api/axios";
 import { showSuccess, showError } from "../utils/toast";
 
 function Jobs() {
+  const navigate = useNavigate();
   const [jobs, setJobs] = useState([]);
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -107,7 +109,7 @@ function Jobs() {
 
   const handleLogout = () => {
     localStorage.clear();
-    window.location.href = "/login";
+    navigate("/login");
   };
 
   return (
@@ -119,7 +121,7 @@ function Jobs() {
           <div className="flex justify-between items-center md:hidden">
             <h1 
               className="text-xl font-bold text-gray-800 cursor-pointer hover:text-blue-600 transition"
-              onClick={() => window.location.href = '/jobs'}
+              onClick={() => navigate('/jobs')}
             >
               Job Portal
             </h1>
@@ -137,19 +139,19 @@ function Jobs() {
           <div className="hidden md:flex justify-between items-center">
             <h1 
               className="text-2xl font-bold text-gray-800 cursor-pointer hover:text-blue-600 transition"
-              onClick={() => window.location.href = '/jobs'}
+              onClick={() => navigate('/jobs')}
             >
               Job Portal
             </h1>
             <div className="flex items-center space-x-4">
               <button
-                onClick={() => window.location.href = '/profile'}
+                onClick={() => navigate('/profile')}
                 className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition"
               >
                 Profile
               </button>
               <button
-                onClick={() => window.location.href = '/my-applications'}
+                onClick={() => navigate('/my-applications')}
                 className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition"
               >
                 My Applications
@@ -168,13 +170,13 @@ function Jobs() {
             <div className="md:hidden mt-4 pb-4 border-t border-gray-200 pt-4">
               <div className="flex flex-col space-y-3">
                 <button
-                  onClick={() => { window.location.href = '/profile'; setMobileMenuOpen(false); }}
+                  onClick={() => { navigate('/profile'); setMobileMenuOpen(false); }}
                   className="text-left px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition rounded-lg hover:bg-gray-50"
                 >
                   Profile
                 </button>
                 <button
-                  onClick={() => { window.location.href = '/my-applications'; setMobileMenuOpen(false); }}
+                  onClick={() => { navigate('/my-applications'); setMobileMenuOpen(false); }}
                   className="text-left px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition rounded-lg hover:bg-gray-50"
                 >
                   My Applications
