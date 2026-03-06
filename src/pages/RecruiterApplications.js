@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import API from '../api/axios';
 import { showSuccess, showError } from '../utils/toast';
 
 const RecruiterApplications = () => {
+  const navigate = useNavigate();
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -92,7 +94,7 @@ const RecruiterApplications = () => {
                   </div>
                   <div className="flex items-center justify-between">
                     <button
-                      onClick={() => window.location.href = `/applicant/${app.applicant?._id}`}
+                      onClick={() => navigate(`/applicant/${app.applicant?._id}`)}
                       className="text-xs text-blue-600 hover:text-blue-800 font-medium"
                     >
                       View Profile
@@ -142,7 +144,7 @@ const RecruiterApplications = () => {
                           <div className="ml-3 sm:ml-4">
                             <div className="text-xs sm:text-sm font-semibold text-gray-900">{app.applicant?.name || 'No Name'}</div>
                             <button
-                              onClick={() => window.location.href = `/applicant/${app.applicant?._id}`}
+                              onClick={() => navigate(`/applicant/${app.applicant?._id}`)}
                               className="text-xs text-blue-600 hover:text-blue-800 font-medium"
                             >
                               View Profile
