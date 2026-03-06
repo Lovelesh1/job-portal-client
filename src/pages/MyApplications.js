@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../api/axios";
 
 function MyApplications() {
+  const navigate = useNavigate();
   const [apps, setApps] = useState([]);
 
   useEffect(() => {
@@ -14,7 +16,7 @@ function MyApplications() {
 
   const handleLogout = () => {
     localStorage.clear();
-    window.location.href = "/login";
+    navigate("/login");
   };
 
   return (
@@ -24,19 +26,19 @@ function MyApplications() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <h1 
             className="text-2xl font-bold text-gray-800 cursor-pointer hover:text-blue-600 transition"
-            onClick={() => window.location.href = '/jobs'}
+            onClick={() => navigate('/jobs')}
           >
             Job Portal
           </h1>
           <div className="flex items-center space-x-4">
             <button
-              onClick={() => window.location.href = '/profile'}
+              onClick={() => navigate('/profile')}
               className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition"
             >
               Profile
             </button>
             <button
-              onClick={() => window.location.href = '/jobs'}
+              onClick={() => navigate('/jobs')}
               className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition"
             >
               Browse Jobs
